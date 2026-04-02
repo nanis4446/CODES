@@ -1,0 +1,22 @@
+#include <stdio.h>
+int main(){
+    int n,i,j,c[10][10],cost[10];
+
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            scanf("%d",&c[i][j]);
+
+    cost[0]=0;
+
+    for(i=1;i<n;i++){
+        cost[i]=999;
+        for(j=0;j<i;j++){
+            if(c[j][i]!=0 && cost[j]+c[j][i]<cost[i]){
+                cost[i]=cost[j]+c[j][i];
+            }
+        }
+    }
+
+    printf("%d",cost[n-1]);
+}
