@@ -1,0 +1,23 @@
+n=int(input())
+g=[list(map(int,input().split())) for _ in range(n)]
+
+visited=[0]*n
+visited[0]=1
+cost=0
+
+for _ in range(n-1):
+    m=999
+    x=0
+    y=0
+    for i in range(n):
+        if visited[i]:
+            for j in range(n):
+                if not visited[j] and g[i][j]!=0:
+                    if g[i][j]<m:
+                        m=g[i][j]
+                        x=i
+                        y=j
+    visited[y]=1
+    cost+=m
+
+print(cost)
